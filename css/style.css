@@ -1,0 +1,279 @@
+@font-face {
+	font-family: "font";
+    src: url("data:application/font-woff; charset=utf-8; base64,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") format("woff2");
+}
+*, :after, :before {
+    box-sizing: border-box;
+    border: 0 solid #e5e7eb;
+}
+h1.title {
+	font-family: "font";
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+html {
+    height: 100%;
+    width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    background-image: linear-gradient(#0284c7, #22d3ee, #fef3c7);
+    color: white;
+    font-size: 14px;
+    line-height: 1.5;
+}
+body {
+    margin: 0;
+}
+.flex {
+    display: flex;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-col {
+    flex-direction: column;
+}
+.justify-center {
+    justify-content: center;
+}
+.hidden {
+    display: none;
+}
+.rounded {
+    border-radius: 0.25rem;
+}
+#info {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: -0.25rem;
+    padding-bottom: -0.25rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    margin-right: 0.25rem;
+    width: 250px;
+    z-index: 3;
+    & p {
+        margin: 0.25rem;
+    }
+    & .mr-5 {
+        margin-right: 1.25rem;
+    }
+}
+#board button {
+    touch-action: manipulation;
+    box-sizing: border-box;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: default;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    line-height: 1.75;
+    &.cellSelected {
+        cursor: pointer;
+        border: 2px solid rgb(251,146,60);
+    }
+}
+#itemList {
+    overflow: auto;
+    max-height: 75vh;
+    & div {
+        overflow: auto;
+        max-height: 60vh;
+        & table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse;
+            width: 100%;
+            & td {
+                padding: 0.5rem 0rem 0.5rem 0.5rem;
+                margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+            }
+            & tr:first-child>*:first-child{
+                border-radius: 0.5rem 0 0 0;
+            }
+            & tr:first-child>*:last-child{
+                border-radius: 0 0.5rem 0 0;
+            }
+            & tr:last-child>*:first-child{
+                border-radius: 0 0 0 0.5rem;
+            }
+            & tr:last-child>*:last-child{
+                border-radius: 0 0 0.5rem 0;
+            }
+        }
+    }
+    & #itemDescription {
+        margin-top: 0.5rem;
+        padding: 0.5em 1em;
+        border: solid 1px #aaaaaa;
+        border-radius: 0.5rem;
+    }
+}
+.m-1 {
+    margin: 0.25rem;
+}
+.bg-sky-300 {
+    background-color: rgb(125,211,252);
+}
+.bg-sky-400 {
+    background-color: rgb(56,189,248);
+}
+.bg-slate-100 {
+    background-color: rgb(241,245,249);
+}
+.bg-slate-200 {
+    background-color: rgb(226,232,240);
+}
+.bg-transparent-black {
+    background-color: rgba(0,0,0,0.3);
+}
+.text-black {
+    color: rgb(0,0,0);
+}
+.text-blue-500 {
+    color: rgb(59,130,246);
+}
+.text-green-500 {
+    color: rgb(34,197,94);
+}
+.text-red-500 {
+    color: rgb(239,68,68);
+}
+.text-indigo-700 {
+    color: rgb(67,56,202);
+}
+.text-orange-500 {
+    color: rgb(249,115,22);
+}
+.text-cyan-500 {
+    color: rgb(6,182,212);
+}
+.text-violet-500 {
+    color: rgb(139,92,246);
+}
+
+
+/* Modal */
+.modalWrapper {
+    display: flex;
+    overflow: auto;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    & .modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        gap: 0.4rem;
+        width: 95%;
+        max-width: 450px;
+        padding: 1rem 1rem 0.5rem 1rem;
+        min-height: 100px;
+        z-index: 2;
+        position: fixed;
+        margin-top: 10vh;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        border: 1px solid #aaaaaa;
+        border-radius: 0.5rem;
+        animation-duration: 0.3s;
+        animation-name: fadein;
+        & ul {
+            padding-inline-start: 20px;
+        }
+        & .center {
+            display: flex;
+            justify-content: center;
+        }
+        & .btn {
+            white-space: nowrap;
+            display: inline-block;
+            padding: 0.75rem 3rem;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            color: white;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin: 5px;
+            &.mini {
+                margin: 0px 0px;
+                padding: 0.5rem 0.5rem;
+                border-radius: 0.25rem;
+            }
+            &:disabled {
+                border-color: rgba(255,255,255,0.5);
+                background-color: rgba(255,255,255,0.5);
+            }
+            &:disabled:hover {
+                cursor: no-drop;
+                box-shadow: none;
+            }
+        }
+    }
+}
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.modalOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+/* Toast */
+.toastWrapper {
+    display: flex;
+    justify-content: center;
+    & .toast {
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        opacity: 0;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 0.25rem;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.5);
+        & .red {
+            color: red;
+        }
+    }
+    & .center {
+        display: flex;
+        justify-content: center;
+    }
+}

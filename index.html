@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minescape</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/favicon.ico">
+</head>
+<body>
+    <!-- 横に並べる -->
+    <main class="flex flex-row justify-center">
+        <!-- 縦に並べる -->
+        <div class="flex flex-col">
+            <!-- 横に並べる -->
+            <section class="flex flex-row justify-center m-1 hidden">
+                <div id="info" class="flex rounded"></div>
+                <cus-btn id="item" class="green">アイテム</cus-btn>
+            </section>
+
+             <!-- ボード -->
+            <div id="board">
+                <div></div>
+            </div>
+
+            <!-- 縦に並べる -->
+            <section class="flex flex-col justify-center m-1">
+                <h1 class="title">Minescape</h1>
+                <dl>
+                    <dt>自己記録:</dt>
+                    <dd>Stage <span id="stageRecord">01<span></dd>
+                    <dd>$ <span id="moneyRecord">0<span></dd>
+                    <dd><span id="recordDate"><span></dd>
+                </dl>
+                 <!-- 横に並べる -->
+                <div class="flex flex-row justify-center">
+                    <cus-btn id="startBtn" class="green">ゲームスタート</cus-btn>
+                    <cus-btn id="howToPlay" class="green">遊び方を見る</cus-btn>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="./js/UIComponents.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>
