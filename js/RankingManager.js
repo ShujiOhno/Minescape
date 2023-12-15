@@ -2,7 +2,7 @@ import GameMain from './GameMain.js'
 import { Modal, Toast } from './UIUtil.js'
 
 export default class RankingManager {
-    static #GAS_URL = 'https://script.google.com/macros/s/AKfycbzPh6NYUgJboEUpSAmdzsZPJBbSIByguarSxBUvWCk2qIpvnCEwfbTa-g2ListWUEFf/exec'
+    static #GAS_URL = 'https://script.google.com/macros/s/AKfycbwiF02TUGamFn6Rsxv2ICYcY-KrDCPJCbqdAVrUEVjPYUYNmz3WTETTZ3t8rdFO4urx/exec'
     // ランキング表示
     static async #displayRanking() {
         const modal = new Modal({
