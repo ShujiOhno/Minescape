@@ -1,6 +1,7 @@
 import BoardManager from './BoardManager.js'
 import { Modal, Toast } from './UIUtil.js'
 import ItemManager from './ItemManager.js'
+import RankingManager from './RankingManager.js'
 
 export default class GameMain {
     #gameInfo
@@ -277,24 +278,84 @@ export default class GameMain {
     // ゲームオーバー
     #gameOver() {
         clearInterval(this.#timer)
-        const record = JSON.parse(localStorage.myRecord ?? '{}')
-        if (this.#gameInfo.stage > (record?.stage ?? 1)) {
+        // 自己記録を保存する
+        const record = GameMain.loadMyRecord()
+        if (this.#gameInfo.stage > record.stage) {
             record.stage = this.#gameInfo.stage
             record.date = Date.now()
         }
-        if (this.#playerInfo.money > (record?.money ?? 0)) {
+        if (this.#playerInfo.money > record.money) {
             record.money = this.#playerInfo.money
             record.date = Date.now()
         }
-        localStorage.myRecord = JSON.stringify(record)
+        GameMain.saveMyRecord(record)
 
+        const html = `
+            <div id="gameOver">
+                <p class="center">GAME OVER</p>
+                <p class="center">
+                    プレイヤー名： <input type="text" id="playerName" value="${record?.name ?? 'no name'}">
+                </p>
+                <p class="center text-red-500 error font-bold"></p>
+            </div>
+        `
         new Modal({
             target: 'body',
-            html: '<div class="center"><p>GAME OVER</p></div>',
-            buttons: [{ text: 'OK', class: 'close' }],
+            html: html,
+            buttons: [
+                {
+                    text: '終了',
+                    class: 'close',
+                },
+                {
+                    text: 'ランキング登録',
+                    onclick: RankingManager.registerRanking.bind(RankingManager, this.#gameInfo.stage, this.#playerInfo.money),
+                },
+            ],
             callback: () => {
                 location.reload()
             },
         })
+    }
+
+    // 自己記録保存
+    static #saveMyRecord(record) {
+        localStorage.myRecord = JSON.stringify(record)
+    }
+    static get saveMyRecord() {
+        return this.#saveMyRecord
+    }
+
+    // 自己記録読み込み
+    static #loadMyRecord() {
+        const record = localStorage.myRecord
+        if (record) {
+            return JSON.parse(record)
+        } else {
+            return {
+                date: null,
+                stage: 1,
+                money: 0,
+                name: 'no name',
+            }
+        }
+    }
+    static get loadMyRecord() {
+        return this.#loadMyRecord
+    }
+
+    // UnixTime→フォーマット済み日時
+    static #getFormattedDateStr(unixTime) {
+        const date = new Date(unixTime)
+        const yyyy = date.getFullYear()
+        const MM = (date.getMonth() + 1).toString().padStart(2, '0')
+        const dd = date.getDate().toString().padStart(2, '0')
+        const hh = date.getHours().toString().padStart(2, '0')
+        const mm = date.getMinutes().toString().padStart(2, '0')
+        const ss = date.getSeconds().toString().padStart(2, '0')
+        return `${yyyy}/${MM}/${dd} ${hh}:${mm}:${ss}`
+    }
+    static get getFormattedDateStr() {
+        return this.#getFormattedDateStr
     }
 }

@@ -1,32 +1,34 @@
 import GameMain from './GameMain.js'
 import { Modal, Toast } from './UIUtil.js'
 import ItemManager from './ItemManager.js'
+import RankingManager from './RankingManager.js'
 ;(() => {
-    // ゲーム開始
+    // 初期設定
+    const initialSettings = {
+        stage: 1,
+        initialRemainTime: 180,
+        remainTime: 180,
+        money: 0,
+        currHp: 100,
+        maxHp: 100,
+        items: [
+            { id: 0, holdNum: 0 },
+            { id: 1, holdNum: 0 },
+            { id: 2, holdNum: 0 },
+            { id: 3, holdNum: 0 },
+            { id: 4, holdNum: 0 },
+            { id: 5, holdNum: 0 },
+            { id: 6, holdNum: 0 },
+            { id: 7, holdNum: 0 },
+            { id: 8, holdNum: 0 },
+        ],
+    }
+    const game = new GameMain(initialSettings)
+    // ゲームスタート
     document.getElementById('startBtn').addEventListener('click', (event) => {
         event.target.closest('section').classList.add('hidden')
         document.getElementById('info').closest('section').classList.remove('hidden')
-        // 初期設定
-        const initialSettings = {
-            stage: 1,
-            initialRemainTime: 180,
-            remainTime: 180,
-            money: 0,
-            currHp: 100,
-            maxHp: 100,
-            items: [
-                { id: 0, holdNum: 0 },
-                { id: 1, holdNum: 0 },
-                { id: 2, holdNum: 0 },
-                { id: 3, holdNum: 0 },
-                { id: 4, holdNum: 0 },
-                { id: 5, holdNum: 0 },
-                { id: 6, holdNum: 0 },
-                { id: 7, holdNum: 0 },
-                { id: 8, holdNum: 0 },
-            ],
-        }
-        new GameMain(initialSettings).start()
+        game.start()
     })
 
     // 遊び方を見る
@@ -46,7 +48,7 @@ import ItemManager from './ItemManager.js'
         new Modal({
             target: 'body',
             html: html,
-            buttons: [{ text: 'OK', class: 'close' }],
+            buttons: [{ text: '閉じる', class: 'close' }],
         })
     })
 
@@ -56,22 +58,19 @@ import ItemManager from './ItemManager.js'
     })
 
     // 自己記録を読み込む
-    const record = JSON.parse(localStorage.myRecord ?? '{}')
-    const stage = (record?.stage ?? 1).toString().padStart(2, '0')
-    const money = (record?.money ?? 0).toLocaleString('ja-JP')
+    const record = GameMain.loadMyRecord()
+    const stage = record.stage.toString().padStart(2, '0')
+    const money = record.money.toLocaleString('ja-JP')
     let dateStr = ''
-    const unixTime = record?.date
-    if (unixTime) {
-        const date = new Date(unixTime)
-        const yyyy = date.getFullYear()
-        const MM = (date.getMonth() + 1).toString().padStart(2, '0')
-        const dd = date.getDate().toString().padStart(2, '0')
-        const hh = date.getHours().toString().padStart(2, '0')
-        const mm = date.getMinutes().toString().padStart(2, '0')
-        const ss = date.getSeconds().toString().padStart(2, '0')
-        dateStr = `${yyyy}/${MM}/${dd} ${hh}:${mm}:${ss}`
+    if (record.date) {
+        dateStr = GameMain.getFormattedDateStr(record.date)
     }
     document.getElementById('stageRecord').textContent = stage
     document.getElementById('moneyRecord').textContent = money
     document.getElementById('recordDate').textContent = dateStr
+
+    // ランキング画面
+    document.getElementById('rankingBtn').addEventListener('click', () => {
+        RankingManager.displayRanking()
+    })
 })()

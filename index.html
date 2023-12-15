@@ -18,22 +18,24 @@
                 <cus-btn id="item" class="green">アイテム</cus-btn>
             </section>
 
-             <!-- ボード -->
+            <!-- ボード -->
             <div id="board">
                 <div></div>
             </div>
 
             <!-- 縦に並べる -->
-            <section class="flex flex-col justify-center m-1">
+            <section class="flex flex-col justify-center items-center m-1">
                 <h1 class="title">Minescape</h1>
-                <dl>
+                <dl class="m-1">
                     <dt>自己記録:</dt>
                     <dd>Stage <span id="stageRecord">01<span></dd>
                     <dd>$ <span id="moneyRecord">0<span></dd>
                     <dd><span id="recordDate"><span></dd>
                 </dl>
-                 <!-- 横に並べる -->
-                <div class="flex flex-row justify-center">
+                <cus-btn id="rankingBtn" class="green">ランキングを見る</cus-btn>
+
+                <!-- 横に並べる -->
+                <div class="flex flex-row justify-center items-center">
                     <cus-btn id="startBtn" class="green">ゲームスタート</cus-btn>
                     <cus-btn id="howToPlay" class="green">遊び方を見る</cus-btn>
                 </div>

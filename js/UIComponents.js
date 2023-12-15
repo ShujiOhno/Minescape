@@ -17,8 +17,8 @@ class CustomBtn extends HTMLElement {
             's-black-l': 'rgba(0,0,0,0.2)',
         }
         this.shadowRoot.innerHTML = `
-		<style>
-		button {
+        <style>
+        button {
             box-sizing: border-box;
             border-width: 0;
             border-style: solid;
@@ -54,7 +54,7 @@ class CustomBtn extends HTMLElement {
                 cursor: no-drop;
                 box-shadow: none;
             }
-		}
+        }
         span.effect {
             position: absolute;
             right: 0px;
@@ -71,12 +71,12 @@ class CustomBtn extends HTMLElement {
         button, span.text {
             position: relative;
         }
-		</style>
+        </style>
         <button class="${colorClass}" ${this.disabled ? 'disabled' : ''}>
             <span class="effect"></span>
             <span class="text">${this.innerHTML}</span>
         </button>
-		`
+        `
         this.addEventListener('click', (e) => {
             if (this.disabled) {
                 e.preventDefault()
@@ -108,3 +108,84 @@ class CustomBtn extends HTMLElement {
     }
 }
 customElements.define('cus-btn', CustomBtn)
+
+/* loading */
+class CustomLoading extends HTMLElement {
+    constructor() {
+        super()
+        this.attachShadow({ mode: 'open' })
+        this.shadowRoot.innerHTML = `
+        <style>
+        .loading-wrap {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            width: 48px;
+            height: 48px;
+            margin: 48px auto;
+        }
+        .loading-1, .loading-2, .loading-3, .loading-4, .loading-5, .loading-6, .loading-7, .loading-8 {
+            position: absolute;
+            border: 4px solid transparent;
+            border-radius: 100%;
+        }
+        .loading-1 {
+            top: 0;
+            left: 20px;
+            animation: loading 1s infinite;
+        }
+        .loading-2 {
+            top: 5px;
+            right: 5px;
+            animation: loading 1s infinite 0.125s;
+        }
+        .loading-3 {
+            top: 20px;
+            right: 0;
+            animation: loading 1s infinite 0.25s;
+        }
+        .loading-4 {
+            bottom: 5px;
+            right: 5px;
+            animation: loading 1s infinite 0.375s;
+        }
+        .loading-5 {
+            bottom: 0;
+            left: 20px;
+            animation: loading 1s infinite 0.5s;
+        }
+        .loading-6 {
+            bottom: 5px;
+            left: 5px;
+            animation: loading 1s infinite 0.625s;
+        }
+        .loading-7 {
+            top: 20px;
+            left: 0;
+            animation: loading 1s infinite 0.75s;
+        }
+        .loading-8 {
+            top: 5px;
+            left: 5px;
+            animation: loading 1s infinite 0.875s;
+        }
+        @keyframes loading {
+            0% {border-color:#333;}
+            100% {border-color:#fff;}
+        }
+        </style>
+        <div class="loading-wrap">
+            <div class="loading-1"></div>
+            <div class="loading-2"></div>
+            <div class="loading-3"></div>
+            <div class="loading-4"></div>
+            <div class="loading-5"></div>
+            <div class="loading-6"></div>
+            <div class="loading-7"></div>
+            <div class="loading-8"></div>
+	    </div>
+        `
+    }
+}
+customElements.define('cus-loading', CustomLoading)
