@@ -105,10 +105,6 @@ export default class BoardManager {
 
     // マスを描画する
     #drawBoard() {
-        let hasTouchScreen = false
-        if ('ontouchstart' in window && navigator.maxTouchPoints > 0) {
-            hasTouchScreen = true
-        }
         const wrapper = document.createElement('div')
         const fragment = document.createDocumentFragment()
         for (let y = 0; y < this.#rows; y++) {
@@ -125,7 +121,7 @@ export default class BoardManager {
                     btn.textContent = BoardManager.cellText[cell.type]
                 }
                 // タッチデバイスは長押しでフラグをセット
-                if (hasTouchScreen) {
+                if (GameMain.hasTouchScreen) {
                     btn.ontouchstart = (event) => {
                         this.#onMouseOver(x, y, event)
                         let count = 0

@@ -1,6 +1,10 @@
+import GameMain from './GameMain.js'
+
 /* Modal */
 export class Modal {
     constructor(stg) {
+        // タッチデバイスか否かでリッスンするイベントを変える
+        const eventType = GameMain.hasTouchScreen ? 'touchend' : 'click'
         const targetNode = document.querySelector(stg.target ?? 'body')
         // 要素を生成
         let modalWrapper = document.createElement('div')
@@ -18,7 +22,7 @@ export class Modal {
             btn.id = btnStg.id ?? ''
             btn.className = `btn ${btnStg.class ?? ''}`
             if (btnStg.onclick) {
-                btn.onclick = btnStg.onclick
+                btn.addEventListener(eventType, btnStg.onclick)
             }
             btnWrapper.appendChild(btn)
         })
@@ -31,8 +35,11 @@ export class Modal {
                 stg.callback()
             }
         }
-        modalOverlay.addEventListener('click', remove, { once: true })
-        btnWrapper.querySelectorAll('.btn.close').forEach((el) => el.addEventListener('click', remove, { once: true }))
+        // タッチデバイスは枠外タップを無効にする
+        if (!GameMain.hasTouchScreen) {
+            modalOverlay.addEventListener(eventType, remove, { once: true })
+        }
+        btnWrapper.querySelectorAll('.btn.close').forEach((el) => el.addEventListener(eventType, remove, { once: true }))
         // 要素を追加する
         modalWrapper.appendChild(modalNode)
         modalWrapper.appendChild(modalOverlay)

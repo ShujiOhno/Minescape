@@ -358,4 +358,15 @@ export default class GameMain {
     static get getFormattedDateStr() {
         return this.#getFormattedDateStr
     }
+
+    // タッチデバイスか否か判定する
+    static get #hasTouchScreen() {
+        if ('ontouchstart' in window && navigator.maxTouchPoints > 0) {
+            return true
+        }
+        return false
+    }
+    static get hasTouchScreen() {
+        return this.#hasTouchScreen
+    }
 }
