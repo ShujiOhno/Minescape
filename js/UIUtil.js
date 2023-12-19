@@ -22,7 +22,8 @@ export class Modal {
             btn.id = btnStg.id ?? ''
             btn.className = `btn ${btnStg.class ?? ''}`
             if (btnStg.onclick) {
-                btn.addEventListener(eventType, btnStg.onclick)
+                // 誤タップ防止用に300msの遅延を設ける
+                setTimeout(() => btn.addEventListener(eventType, btnStg.onclick), 300)
             }
             btnWrapper.appendChild(btn)
         })
@@ -35,11 +36,11 @@ export class Modal {
                 stg.callback()
             }
         }
-        // タッチデバイスは枠外タップを無効にする
-        if (!GameMain.hasTouchScreen) {
+        // 誤タップ防止用に300msの遅延を設ける
+        setTimeout(() => {
             modalOverlay.addEventListener(eventType, remove, { once: true })
-        }
-        btnWrapper.querySelectorAll('.btn.close').forEach((el) => el.addEventListener(eventType, remove, { once: true }))
+            btnWrapper.querySelectorAll('.btn.close').forEach((el) => el.addEventListener(eventType, remove, { once: true }))
+        }, 300)
         // 要素を追加する
         modalWrapper.appendChild(modalNode)
         modalWrapper.appendChild(modalOverlay)
